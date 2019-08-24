@@ -6,13 +6,13 @@
 
     <div *ngIf="register; else formLogin">
       <div [@form]="stateForm" class="col-sm-6 d-flex justify-content-start">
-        <app-register></app-register>
+        <app-register (showPanel)="showPanel($event)"></app-register>
       </div>  
     </div>
 
     <ng-template #formLogin>
       <div [@form]="stateForm" class="col-sm-6 d-flex justify-content-start">
-        <app-login></app-login>
+        <app-login (showPanel)="showPanel($event)"></app-login>
       </div>  
     </ng-template>
     

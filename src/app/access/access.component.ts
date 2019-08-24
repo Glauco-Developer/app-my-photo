@@ -15,7 +15,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
           opacity: 0,
           transform: 'translateX(-50px)'
         }),
-        animate('1s 1s ease-in-out')
+        animate('500ms 500ms ease-in-out')
       ])
     ]),
     trigger('form', [
@@ -28,8 +28,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
           opacity: 0,
           transform: 'translateX(50px)'
         }),
-        animate('1s 1s ease-in-out')
-      ])
+        animate('500ms 500ms ease-in-out')
+      ]),
     ])
   ]
 })
@@ -39,11 +39,15 @@ export class AccessComponent implements OnInit {
   public stateBanner: string = 'created';
   public stateForm: string = 'created';
 
-  public register: boolean = true 
+  public register: boolean = false 
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public showPanel(event: string): void {
+    this.register = event === 'register' ? true : false;
   }
 
 }

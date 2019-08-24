@@ -14,14 +14,14 @@
         <input 
           type="password"
           class="form-control" 
-          placeholder="Senha"
+          placeholder="Password"
         >
       </div>
-      <button type="submit" class="btn btn-primary btn-sm btn-block">Entrar</button>
+      <button type="submit" class="btn btn-primary btn-sm btn-block">Sign in</button>
     </form>
     <hr />
 
-    <p class="small text-danger text-center">O nome de usuário inserido não pertence a uma conta. Verifique seu nome de usuário e tente novamente.</p>
+    <p class="small text-danger text-center">The username you entered does not belong to an account. Please verify your username and try again.</p>
 
   </div>
 </div>
@@ -29,7 +29,7 @@
 <div class="card" style="width: 20rem;">
   <div class="card-body">
     <p class="card-text">
-      Não tem uma conta? <a href="#" class="card-link">Cadastre-se</a>
+      Don't have an account? <a href="#" (click)="showSignupForm()" class="card-link">Sign up</a>
     </p> 
   </div>
 </div>
