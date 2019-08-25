@@ -36,7 +36,8 @@ export class RegisterComponent implements OnInit {
       this.signupForm.value.password
     )
 
-    this.auth.registerUser(user);
+    this.auth.registerUser(user)
+      .then(() => { this.showSignInForm() })
   }
 
 }
