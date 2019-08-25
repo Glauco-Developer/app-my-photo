@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private auth: AuthService, private fb: FormBuilder) { }
 
-  ngOnInit() {console.log(this.signupForm)
+  ngOnInit() {
   }
 
   public showSignInForm(): void {

@@ -2,12 +2,13 @@
   <div class="card-body">
     <div class="card-title"></div>
     
-    <!-- <form> -->
+    <form [formGroup]="signinForm" (ngSubmit)="loginUser(signinForm)">
       <div class="form-group">
         <input 
           type="email" 
           class="form-control" 
           placeholder="E-mail"
+          formControlName="email"
         >
       </div>
       <div class="form-group">
@@ -15,10 +16,11 @@
           type="password"
           class="form-control" 
           placeholder="Password"
+          formControlName="password"
         >
       </div>
-      <button type="submit" class="btn btn-primary btn-sm btn-block">Sign in</button>
-    <!-- </form> -->
+      <button [disabled]="!signinForm.valid" type="submit" class="btn btn-primary btn-sm btn-block">Sign in</button>
+    </form>
     <hr />
 
     <p class="small text-danger text-center">The username you entered does not belong to an account. Please verify your username and try again.</p>
