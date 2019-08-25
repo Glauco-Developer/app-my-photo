@@ -8,6 +8,7 @@ import { BannerComponent } from './access/banner/banner.component';
 import { LoginComponent } from './access/login/login.component';
 import { RegisterComponent } from './access/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './access/auth.service';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AuthService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
