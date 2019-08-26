@@ -11,7 +11,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './access/auth.service';
 import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './home/posts/posts.component';
-import { AuthGuard } from './auth.guard.service';
+import { AuthGuard } from './auth.guard';
+import { AddPostComponent } from './home/add-post/add-post.component';
+import { DatabaseService } from './database.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { AuthGuard } from './auth.guard.service';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    PostsComponent
+    PostsComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { AuthGuard } from './auth.guard.service';
     BrowserAnimationsModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,7 +9,7 @@ export const environment = {
     authDomain: "my-photos-5b2f7.firebaseapp.com",
     databaseURL: "https://my-photos-5b2f7.firebaseio.com",
     projectId: "my-photos-5b2f7",
-    storageBucket: "",
+    storageBucket: "my-photos-5b2f7.appspot.com",
     messagingSenderId: "462301461592",
     appId: "1:462301461592:web:42bde0fb4c2e142d"
   }

@@ -12,6 +12,7 @@ import { User } from '../user.model';
 export class LoginComponent implements OnInit {
 
   @Output() public showPanel: EventEmitter<string> = new EventEmitter<string>();
+  public errorMsg: string;
 
   constructor(private auth: AuthService, private fb: FormBuilder) { }
 
@@ -28,10 +29,12 @@ export class LoginComponent implements OnInit {
   }
 
   public loginUser(): void {
-    this.auth.authUser(
-      this.signinForm.value.email,
-      this.signinForm.value.password
-    )
+    this.auth.authUser(this.signinForm.value.email, this.signinForm.value.password)
+      .then(() => {
+        if(this.auth.error !== undefined) {
+          this.errorMsg = this.auth.error.message
+        }
+      })
   }
 
 }

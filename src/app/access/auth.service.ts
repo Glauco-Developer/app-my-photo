@@ -9,6 +9,7 @@ import 'firebase/database';
 export class AuthService {
 
     public token_id: string;
+    public error;
 
     constructor(private router: Router) {}
 
@@ -20,21 +21,41 @@ export class AuthService {
                     .set(user)
             })
             .catch((error: Error) => {
-                console.log(error)
+                this.error = error;
             })
     }
 
-    public authUser(email: string, password: string): void {
-        firebase.auth().signInWithEmailAndPassword(email, password)
+    public authUser(email: string, password: string): Promise<any> {
+        return firebase.auth().signInWithEmailAndPassword(email, password)
             .then((res: any) => {
                 firebase.auth().currentUser.getIdToken()
                     .then((idToken: string) => {
                         this.token_id = idToken;
+                        localStorage.setItem('idToken', this.token_id)
                         this.router.navigate(['/home'])
                     })
             })
             .catch((error: Error) => {
-                console.log(error)
+                this.error = error
+            })
+    }
+
+    public authenticated(): boolean {        
+        if(this.token_id === undefined && localStorage.getItem('idToken') != null) {
+            this.token_id = localStorage.getItem('idToken')
+        }
+        if(this.token_id === undefined) {
+            this.router.navigate(['/'])
+        }
+        return this.token_id !== undefined;
+    }
+
+    public logout(): void {
+        firebase.auth().signOut()
+            .then(() => {
+                localStorage.removeItem('idToken')
+                this.token_id = undefined
+                this.router.navigate(['/'])
             })
     }
 }

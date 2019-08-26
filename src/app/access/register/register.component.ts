@@ -18,6 +18,8 @@ export class RegisterComponent implements OnInit {
     username: ['', [Validators.required, Validators.minLength(4)]],
     password: ['', [Validators.required, Validators.minLength(4)]]
   });
+  
+  public errorMsg: string;
 
   constructor(private auth: AuthService, private fb: FormBuilder) { }
 
@@ -37,7 +39,13 @@ export class RegisterComponent implements OnInit {
     )
 
     this.auth.registerUser(user)
-      .then(() => { this.showSignInForm() })
+      .then(() => {
+        if(this.auth.error !== undefined) {
+          this.errorMsg = this.auth.error.message;
+        } else {
+          this.showSignInForm()
+        }
+      })
   }
 
 }

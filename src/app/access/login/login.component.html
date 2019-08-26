@@ -23,7 +23,7 @@
     </form>
     <hr />
 
-    <p class="small text-danger text-center">The username you entered does not belong to an account. Please verify your username and try again.</p>
+    <p *ngIf="errorMsg" class="small text-danger text-center">{{errorMsg}}</p>
 
   </div>
 </div>
